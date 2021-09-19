@@ -9,14 +9,16 @@ import {
   Switch,
   Route,
 } from "react-router-dom";
+import SearchState from './context/SearchState';
 
 const App = () => {
-  const apiKey=process.env.REACT_APP_NEWS_API_KEY
+  const apiKey = process.env.REACT_APP_NEWS_API_KEY
   const pageSize = 15;
 
   const [progress, setProgress] = useState(0)
-    return (
-      <div>
+  return (
+    <div>
+      <SearchState>
         <Router>
           <NavBar />
           <LoadingBar
@@ -48,8 +50,9 @@ const App = () => {
             </Route>
           </Switch>
         </Router>
-      </div>
-    )
+      </SearchState>
+    </div>
+  )
 }
 
 export default App
